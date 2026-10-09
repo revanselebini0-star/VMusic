@@ -1,12 +1,19 @@
-name: Rilis Otomatis APK Vanz Music
+
+name: Build VanzMusic APK
 
 on:
+  workflow_dispatch:
   push:
     branches:
       - main
+      - master
+
+permissions:
+  contents: read
 
 jobs:
   build:
+    name: Build APK
     runs-on: ubuntu-latest
 
     steps:
@@ -14,25 +21,23 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Set up JDK 17
-        uses: actions/setup-java@v4
+        uses: actions/setup-java@v5
         with:
-          java-version: '17'
-          distribution: 'temurin'
-          cache: gradle
+          distribution: temurin
+          java-version: "17"
 
-      # PERBAIKAN: Membuat file gradlew otomatis jika hilang di repositori
-      - name: Pasang Mesin Perakit Otomatis (Gradle Wrapper)
-        run: |
-          if [ ! -f "gradlew" ]; then
-            gradle wrapper
-          fi
-          chmod +x gradlew
+      - name: Pasang Gradle
+        uses: gradle/actions/setup-gradle@v4
 
-      - name: Rakit APK Tanpa Beban PC Lokal
-        run: ./gradlew assembleDebug
+      - name: Periksa Versi Java
+        run: java -version
 
-      - name: Simpan dan Upload Hasil APK Jadi
+      - name: Build Debug APK
+        run: gradle --no-daemon assembleDebug
+
+      - name: Upload Hasil APK
         uses: actions/upload-artifact@v4
         with:
-          name: Vanz-Music-App-Debug
-          path: app/build/outputs/apk/debug/app-debug.apk
+          name: VanzMusic-debug-APK
+          path: app/build/outputs/apk/debug/*.apk
+          if-no-files-found: error
