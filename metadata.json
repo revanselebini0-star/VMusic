@@ -1,0 +1,6 @@
+{
+  "name": "Vanz Music",
+  "description": "Minimalist, elegant Apple Music styled player with synced lyrics, personalized playlists, and offline mode.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
