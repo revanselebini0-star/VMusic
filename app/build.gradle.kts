@@ -1,7 +1,6 @@
 plugins {
     id("com.android.application")
-    id("org.jetbrains.kotlin.android")
-    // Plugin KSP pembawa eror sudah dihapus total dari sini!
+    // Baris plugin Kotlin ganda pembawa eror sudah dihapus total dari sini!
 }
 
 android {
