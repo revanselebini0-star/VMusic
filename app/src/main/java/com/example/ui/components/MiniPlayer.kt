@@ -1,4 +1,4 @@
-import com.example.R
+package com.example.ui.components
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -37,6 +37,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.R
+import com.example.ui.components.AppAlbumArt
 import com.example.data.model.Song
 import com.example.ui.theme.AppleDarkElevated
 import com.example.ui.theme.AppleExplicitBadge

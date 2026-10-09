@@ -255,7 +255,7 @@ class AudioPlayerManager(private val context: Context) {
                         _durationMs.value = totalDuration
                     }
                 }
-                delay(200)
+                delay(500)
             }
         }
     }

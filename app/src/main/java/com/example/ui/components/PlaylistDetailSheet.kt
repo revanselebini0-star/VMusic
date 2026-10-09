@@ -1,4 +1,4 @@
-import com.example.R
+package com.example.ui.components
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background

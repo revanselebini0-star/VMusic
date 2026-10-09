@@ -1,51 +1,61 @@
-import com.example.R
+package com.example.ui.components
 
-import com.example.player.R
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.MusicNote
+import androidx.compose.material3.Icon
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
+import coil.request.ImageRequest
+import com.example.R
+import com.example.ui.theme.AppleDarkCard
 
 @Composable
 fun AppAlbumArt(
+    albumArtUrl: String?,
+    albumArtDrawableId: Int?,
+    contentDescription: String?,
     modifier: Modifier = Modifier,
-    imageUrl: String? = null,
-    albumArtUrl: String? = imageUrl,
-    albumArtDrawableId: Int? = null,
-    contentDescription: String? = null
+    contentScale: ContentScale = ContentScale.Crop
 ) {
-    val finalUrl = albumArtUrl ?: imageUrl
-
-    when {
-        !finalUrl.isNullOrEmpty() -> {
+    Box(
+        modifier = modifier.background(AppleDarkCard),
+        contentAlignment = Alignment.Center
+    ) {
+        if (!albumArtUrl.isNullOrBlank()) {
             AsyncImage(
-                model = finalUrl,
+                model = ImageRequest.Builder(LocalContext.current)
+                    .data(albumArtUrl)
+                    .crossfade(true)
+                    .placeholder(albumArtDrawableId ?: R.drawable.motive_album_art_1790846205472)
+                    .error(albumArtDrawableId ?: R.drawable.motive_album_art_1790846205472)
+                    .build(),
                 contentDescription = contentDescription,
-                modifier = modifier.clip(RoundedCornerShape(8.dp)),
-                contentScale = ContentScale.Crop,
-                error = painterResource(id = R.drawable.ic_launcher_background),
-                placeholder = painterResource(id = R.drawable.ic_launcher_background)
+                contentScale = contentScale,
+                modifier = Modifier.fillMaxSize()
             )
-        }
-        albumArtDrawableId != null -> {
+        } else if (albumArtDrawableId != null) {
             Image(
                 painter = painterResource(id = albumArtDrawableId),
                 contentDescription = contentDescription,
-                modifier = modifier.clip(RoundedCornerShape(8.dp)),
-                contentScale = ContentScale.Crop
+                contentScale = contentScale,
+                modifier = Modifier.fillMaxSize()
             )
-        }
-        else -> {
-            Image(
-                painter = painterResource(id = R.drawable.ic_launcher_background),
+        } else {
+            Icon(
+                imageVector = Icons.Filled.MusicNote,
                 contentDescription = contentDescription,
-                modifier = modifier.clip(RoundedCornerShape(8.dp)),
-                contentScale = ContentScale.Crop
+                tint = Color.White.copy(alpha = 0.6f),
+                modifier = Modifier.fillMaxSize(0.5f)
             )
         }
     }
