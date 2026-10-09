@@ -1,4 +1,4 @@
-package com.example.ui.components
+import com.example.R
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.core.animateFloatAsState
