@@ -1,4 +1,4 @@
-package com.example.ui.components
+import com.example.R
 
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.foundation.Image
