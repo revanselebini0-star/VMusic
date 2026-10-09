@@ -1,4 +1,4 @@
-package com.example.ui.components
+import com.example.R
 
 import com.example.player.R
 import androidx.compose.foundation.Image
