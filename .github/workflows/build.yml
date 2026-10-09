@@ -28,11 +28,8 @@ jobs:
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v4
 
-      - name: Give Gradle Wrapper Permission
-        run: chmod +x gradlew
-
-      - name: Build APK
-        run: ./gradlew --no-daemon assembleDebug
+      - name: Build Debug APK
+        run: gradle --no-daemon assembleDebug
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
