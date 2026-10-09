@@ -1,7 +1,8 @@
 
 plugins {
     id("com.android.application")
-    id("org.jetbrains.kotlin.plugin.compose") version "2.2.10"
+    id("org.jetbrains.kotlin.android")
+    id("org.jetbrains.kotlin.plugin.compose")
 }
 
 android {
@@ -26,7 +27,6 @@ android {
     buildTypes {
         release {
             isMinifyEnabled = false
-
             proguardFiles(
                 getDefaultProguardFile(
                     "proguard-android-optimize.txt"
@@ -67,6 +67,9 @@ dependencies {
     implementation("androidx.compose.ui:ui-tooling-preview")
     implementation("androidx.compose.material3:material3")
 
+    // Ikon Compose
+    implementation("androidx.compose.material:material-icons-extended")
+
     // Media3 ExoPlayer
     implementation("androidx.media3:media3-exoplayer:1.4.1")
     implementation("androidx.media3:media3-session:1.4.1")
@@ -89,5 +92,6 @@ dependencies {
         "androidx.test.espresso:espresso-core:3.6.1"
     )
 
+    // Preview
     debugImplementation("androidx.compose.ui:ui-tooling")
 }
