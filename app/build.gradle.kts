@@ -3,9 +3,12 @@ plugins {
 }
 
 android {
+    // KUNCI UTAMA: Menentukan nama paket aplikasi secara tegas agar disukai robot GitHub
+    namespace = "com.example.player"
     compileSdk = 34
 
     defaultConfig {
+        applicationId = "com.example.player"
         minSdk = 24
         targetSdk = 34
         versionCode = 1
