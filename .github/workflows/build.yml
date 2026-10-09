@@ -20,8 +20,13 @@ jobs:
           distribution: 'temurin'
           cache: gradle
 
-      - name: Berikan Izin Akses Gradle
-        run: chmod +x gradlew
+      # PERBAIKAN: Membuat file gradlew otomatis jika hilang di repositori
+      - name: Pasang Mesin Perakit Otomatis (Gradle Wrapper)
+        run: |
+          if [ ! -f "gradlew" ]; then
+            gradle wrapper
+          fi
+          chmod +x gradlew
 
       - name: Rakit APK Tanpa Beban PC Lokal
         run: ./gradlew assembleDebug
