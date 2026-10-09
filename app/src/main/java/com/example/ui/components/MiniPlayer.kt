@@ -1,4 +1,4 @@
-package com.example.ui.components
+import com.example.vmusic.R
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
