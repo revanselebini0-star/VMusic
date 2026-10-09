@@ -1,7 +1,6 @@
 
 plugins {
     id("com.android.application")
-    id("org.jetbrains.kotlin.android")
     id("org.jetbrains.kotlin.plugin.compose")
 }
 
@@ -58,7 +57,7 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.8.7")
     implementation("androidx.activity:activity-compose:1.10.1")
 
-    // Jetpack Compose
+    // Compose
     implementation(
         platform("androidx.compose:compose-bom:2025.03.00")
     )
@@ -66,8 +65,6 @@ dependencies {
     implementation("androidx.compose.ui:ui-graphics")
     implementation("androidx.compose.ui:ui-tooling-preview")
     implementation("androidx.compose.material3:material3")
-
-    // Ikon Compose
     implementation("androidx.compose.material:material-icons-extended")
 
     // Media3 ExoPlayer
@@ -92,6 +89,5 @@ dependencies {
         "androidx.test.espresso:espresso-core:3.6.1"
     )
 
-    // Preview
     debugImplementation("androidx.compose.ui:ui-tooling")
 }
