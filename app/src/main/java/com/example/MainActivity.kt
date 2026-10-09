@@ -1,4 +1,4 @@
-package com.example
+import com.example.ui.components.MiniPlayer
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
