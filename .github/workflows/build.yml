@@ -1,5 +1,5 @@
 
-name: Build VanzMusic APK
+name: Build Android APK
 
 on:
   workflow_dispatch:
@@ -13,31 +13,31 @@ permissions:
 
 jobs:
   build:
-    name: Build APK
     runs-on: ubuntu-latest
 
     steps:
-      - name: Ambil Kode dari Repositori
+      - name: Checkout Repository
         uses: actions/checkout@v4
 
-      - name: Set up JDK 17
+      - name: Setup Java 17
         uses: actions/setup-java@v5
         with:
           distribution: temurin
           java-version: "17"
 
-      - name: Pasang Gradle
+      - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v4
 
-      - name: Periksa Versi Java
-        run: java -version
+      - name: Give Gradle Wrapper Permission
+        run: chmod +x gradlew
 
-      - name: Build Debug APK
-        run: gradle --no-daemon assembleDebug
+      - name: Build APK
+        run: ./gradlew --no-daemon assembleDebug
 
-      - name: Upload Hasil APK
+      - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
-          name: VanzMusic-debug-APK
+          name: VanzMusic-APK
           path: app/build/outputs/apk/debug/*.apk
           if-no-files-found: error
+          retention-days: 7
