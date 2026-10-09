@@ -1,4 +1,4 @@
-import com.example.vmusic.R
+import com.example.R
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
